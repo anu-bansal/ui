@@ -9,7 +9,7 @@ import { FarmerHeaderService } from '../../service/farmer-header.service';
 export class FarmerHeaderComponent implements OnInit {
 
   @Output() success = new EventEmitter<any>();
- 	public searchedFarmer: string="kkdFarm1001";
+ 	public gotFarmerName: string="kkdFarm1001";
  	public farmerName : string;
   
 
@@ -20,10 +20,9 @@ export class FarmerHeaderComponent implements OnInit {
 
   // Function to get farmer name and make service call to get farmer name from app
    searchFarmer(){
-   	this.farmerHeaderService.searchFarmer(this.searchedFarmer)
+   	this.farmerHeaderService.getFarmerName(this.gotFarmerName)
    	.subscribe((res) =>{
    		this.farmerName=res.aadhaarData.firstName;
-       console.log(res.aadhaarData.firstName);
    		this.success.emit({
    			'farmerName':this.farmerName
    		});
